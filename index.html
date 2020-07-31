@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="./assets/index.css">
+    <link rel="stylesheet" href="./assets/reset.css">
+</head>
+
+<body>
+    <div id="game">
+        <!-- 开始界面 -->
+        <div class="flappy-bird"></div>
+        <div class="bird"></div>
+        <div class="start"></div>
+        <ul class="menu-content">
+            <li class="sky"></li>
+            <li class="bird-color"></li>
+            <li class="tips"></li>
+        </ul>
+        <div class="tips_pic"></div>
+        <div class="menu"></div>
+        <div class="share"></div>
+
+
+        <div class="score">0</div>
+
+        <!-- 结束界面 -->
+        <div class="mask"></div>
+        <div class="end">
+            <div class="over"></div>
+            <div class="result">Your Results:</div>
+            <div class="final-score">0</div>
+            <ul class="rank-list">
+            </ul>
+            <div class="restart"><span>重新开始</span></div>
+        </div>
+
+    </div>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        bird.init();
+    </script>
+
+</body>
+
+</html>
