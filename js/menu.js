@@ -1,19 +1,19 @@
 
-var interface = {
-    menu: document.getElementsByClassName('menu')[0],
-    game: document.getElementById('game'),
+// var interface = {
+//     menu: document.getElementsByClassName('menu')[0],
+//     game: document.getElementById('game'),
 
-    //MENU变量
-    menu_content: document.getElementsByClassName('menu-content')[0],
-    sky: document.getElementsByClassName('sky')[0],
-    bird_color: document.getElementsByClassName('bird-color')[0],
-    bird: document.getElementsByClassName('bird')[0],
-    tips: document.getElementsByClassName('tips')[0],
+//     //MENU变量
+//     menu_content: document.getElementsByClassName('menu-content')[0],
+//     sky: document.getElementsByClassName('sky')[0],
+//     bird_color: document.getElementsByClassName('bird-color')[0],
+//     bird: document.getElementsByClassName('bird')[0],
+//     tips: document.getElementsByClassName('tips')[0],
 
-    menu_index: 0,
-    sky_index: 0,
-    bird_color_index: 0
-};
+//     menu_index: 0,
+//     sky_index: 0,
+//     bird_color_index: 0
+// };
 
 
 

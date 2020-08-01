@@ -14,6 +14,7 @@ var bird = {
     pipeArr: [], //管子的存储
     score: 0,
     pipeLastIndex: 6, //最后一根管子的索引
+    play: true,
 
 
     /**
@@ -23,8 +24,9 @@ var bird = {
         this.initData();
         this.animate();
         this.handle();
+        this.audioControl();
 
-        if(sessionStorage.getItem('play')) {
+        if (sessionStorage.getItem('play')) {
             this.start();
         }
     },
@@ -47,6 +49,8 @@ var bird = {
         this.scoreArr = this.getScore();
         this.oRankList = this.oEnd.getElementsByClassName('rank-list')[0];
         this.oRestart = this.oEnd.getElementsByClassName('restart')[0];
+        this.oAudio = this.el.getElementsByClassName('audio')[0];
+        this.music = this.oAudio.getElementsByClassName('music')[0];
     },
 
     /**
@@ -77,7 +81,7 @@ var bird = {
         var d = new Date();
         var year = formatNum(d.getFullYear());
         var month = formatNum(d.getMonth() + 1);
-        var day = formatNum(d.getDay());
+        var day = formatNum(d.getDate());
         var hour = formatNum(d.getHours());
         var min = formatNum(d.getMinutes());
         var sec = formatNum(d.getSeconds());
@@ -118,12 +122,17 @@ var bird = {
 
             if (x < -52) {
                 var lastPipeLeft = this.pipeArr[this.pipeLastIndex].up.offsetLeft;
-                oUpPipe.style.left = lastPipeLeft + 300 + 'px';
-                oDownPipe.style.left = lastPipeLeft + 300 + 'px';
-                this.pipeLastIndex = ++this.pipeLastIndex % this.pipeLength;
                 var pipeHeight = this.getPipeHeight()
-                oUpPipe.style.height = pipeHeight.up + 'px';
+                var upHeight = pipeHeight.up;
+
+                oUpPipe.style.left = lastPipeLeft + 294 + 'px';
+                oDownPipe.style.left = lastPipeLeft + 294 + 'px';
+
+                this.pipeLastIndex = ++this.pipeLastIndex % this.pipeLength;
+                oUpPipe.style.height = upHeight + 'px';
                 oDownPipe.style.height = pipeHeight.down + 'px';
+
+                this.pipeArr[i].y = [upHeight, upHeight + 200];
                 continue;
             }
             oUpPipe.style.left = x + 'px';
@@ -205,7 +214,6 @@ var bird = {
         var pipeX = this.pipeArr[index].up.offsetLeft;
         var pipeY = this.pipeArr[index].y;
         var birdY = this.birdTop;
-
         if ((pipeX <= 120 && pipeX >= 26) && (birdY <= pipeY[0] || birdY >= pipeY[1])) {
             this.failGame();
         }
@@ -242,7 +250,6 @@ var bird = {
 
     handleRestart: function () {
         this.oRestart.onclick = function () {
-            
             sessionStorage.setItem('play', true);
             window.location.reload();
         }
@@ -287,9 +294,16 @@ var bird = {
     },
 
 
+    /**
+     * 分数渲染
+     */
     renderRankList: function () {
+        function rankScore(a, b) {
+            return b.score - a.score;
+        }
         var template = '';
-        for (let i = 0; i < this.scoreArr.length; i++) {
+        this.scoreArr.sort(rankScore);
+        for (let i = 0; i < 8; i++) {
             var degreeClass = '';
             switch (i) {
                 case 0:
@@ -311,9 +325,23 @@ var bird = {
             `;
             this.oRankList.innerHTML = template;
         }
+    },
 
+    /**
+     * 音乐控制
+     */
+    audioControl: function () {
+        var self = this;
+        this.oAudio.onclick = function () {
+            if(self.play) {
+                self.oAudio.style.backgroundImage = 'url(../img/button_resume.png)';
+                self.music.pause();
+                self.play = false;
+            } else {
+                self.oAudio.style.backgroundImage = 'url(../img/button_pause.png)';
+                self.music.play();
+                self.play = true;
+            }
+        }
     }
-
-
-
 };
