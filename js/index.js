@@ -9,7 +9,7 @@ var bird = {
     minTop: 0,
     maxTop: 860,
     pipeLength: 7, //管子数
-    pipeOffset: 300, //管子之间的间距
+    pipeOffset: 360, //管子之间的间距
     birdFlyHeight: -10, //小鸟点击之后向上飞的高度
     pipeArr: [], //管子的存储
     score: 0,
