@@ -1,5 +1,7 @@
 ## FlappyBird
 
+#### 链接：http://netan.top/FlappyBird/
+
 #### 开始界面
 
 - 点击开始
