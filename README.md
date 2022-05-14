@@ -1,4 +1,4 @@
-## FlappyBird
+# flappy-bird-web
 
 #### 链接：https://perisiguiendo.github.io/flappy-bird/
 
