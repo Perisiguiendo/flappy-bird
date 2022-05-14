@@ -1,11 +1,10 @@
 ## FlappyBird
 
-#### 链接：http://netan.top/FlappyBird/
+#### 链接：https://perisiguiendo.github.io/flappy-bird/
 
 #### 开始界面
 
 - 点击开始
-- 音乐暂停/播放
 ![image](https://github.com/Perisiguiendo/FlappyBird/blob/master/pic/start.jpg)
 
 #### 游戏界面
